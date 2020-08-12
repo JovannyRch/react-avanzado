@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Category from "..";
 import { List, Item } from "./styles";
-
-const useSetCategories = () => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    window
-      .fetch("https://petgram-server-24iykciv5.now.sh/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false);
-        setCategories(data);
-      });
-  }, []);
-  return { categories, loading };
-};
+import { useFetchData } from "./../../../hooks/useFetchData";
 
 const ListOfCategories = () => {
   const [showFixed, setShowFixed] = useState(false);
-  const { categories, loading } = useSetCategories();
+  const { categories, loading } = useFetchData(
+    "https://petgram-server-24iykciv5.now.sh/categories"
+  );
 
   useEffect(
     function () {

@@ -4,7 +4,10 @@
     "description": "¡Sígueme en Youtube! https://www.youtube.com/midudev",
     "main": "webpack.config.js",
     "dependencies": {
+        "@apollo/react-hooks": "^4.0.0",
         "@babel/runtime": "^7.11.2",
+        "apollo-boost": "^0.4.9",
+        "graphql": "^15.3.0",
         "html-webpack-plugin": "^4.3.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
