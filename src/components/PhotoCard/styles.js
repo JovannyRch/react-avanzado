@@ -19,11 +19,12 @@ export const Image = styled.img`
 `;
 
 export const Button = styled.button`
-  padding-top: 8px;
   display: flex;
   align-items: center;
   padding-top: 8px;
   & svg {
-    margin: 4px;
+    margin-right: 4px;
   }
+  background-color: transparent;
+  border: 0px;
 `;
