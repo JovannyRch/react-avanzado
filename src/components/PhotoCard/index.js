@@ -1,7 +1,9 @@
 import React from "react";
-import { Wrapper, Image, Button } from "./styles";
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { Wrapper, Image } from "./styles";
+
 import { useLocalStorage } from "./../../hooks/useLocalStorage";
+import FavButton from "../FavButton";
+import useToggleLikeMutation from "../../mutation/toggleLikeMutation";
 
 const DEFAULT_IMG =
   "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_cats.jpg";
@@ -9,12 +11,7 @@ const DEFAULT_IMG =
 const PhotoCard = ({ likes = 0, id, src = DEFAULT_IMG }) => {
   const key = "like-" + id;
   const [liked, setLocalStorage] = useLocalStorage(key, false);
-
-  const Icon = liked ? (
-    <MdFavorite size="32px" />
-  ) : (
-    <MdFavoriteBorder size="32px" />
-  );
+  const { toggleLikePhoto } = useToggleLikeMutation(id);
 
   return (
     <article>
@@ -23,10 +20,17 @@ const PhotoCard = ({ likes = 0, id, src = DEFAULT_IMG }) => {
           <Image src={src} />
         </Wrapper>
       </a>
-      <Button onClick={() => setLocalStorage(!liked)}>
-        {Icon}
-        {likes} likes
-      </Button>
+      <FavButton
+        onClick={() => {
+          if (!liked) {
+            console.log("Cambiar en la BD");
+            toggleLikePhoto();
+          }
+          setLocalStorage(!liked);
+        }}
+        liked={liked}
+        likes={likes}
+      />
     </article>
   );
 };

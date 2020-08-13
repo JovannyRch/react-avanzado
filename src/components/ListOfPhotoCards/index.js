@@ -1,11 +1,15 @@
 import React from "react";
 import PhotoCard from "../PhotoCard";
+import { useGetPhotos } from "../../hoc/withPhotos";
 
-const ListOfPhotoCards = () => {
+const ListOfPhotoCards = ({ categoryId }) => {
+  const { data, loading } = useGetPhotos(categoryId);
+  if (loading) return "";
+  if (!data.photos) return <h1>No photos</h1>;
   return (
     <ul>
-      {[0, 1, 2].map((id) => (
-        <PhotoCard id={id} key={id} />
+      {data.photos.map((photo) => (
+        <PhotoCard key={photo.id} {...photo} />
       ))}
     </ul>
   );
