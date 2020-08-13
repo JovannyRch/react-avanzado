@@ -1,8 +1,14 @@
 import React from "react";
+import Context from "../Context";
+import UserForm from "../components/UserForm/UserForm";
 const NotRegister = () => {
   return (
     <>
-      <h1>Not user register</h1>
+      <Context.Consumer>
+        {({ isAuth, activateAuth }) => {
+          return <UserForm title={"Registrarse"} onSubmit={activateAuth} />;
+        }}
+      </Context.Consumer>
     </>
   );
 };
