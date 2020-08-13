@@ -27,7 +27,7 @@ const ListOfCategories = () => {
     <List fixed={fixed}>
       {categories.map((category) => (
         <Item key={category.id}>
-          <Category {...category} />
+          <Category {...category} path={"/pets/" + category.id} />
         </Item>
       ))}
     </List>
