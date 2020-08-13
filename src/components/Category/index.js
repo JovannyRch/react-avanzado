@@ -5,7 +5,7 @@ const DEFAULT_IMG_URL = "https://i.imgur.com/dJa0Hpl.jpg";
 const Category = ({ cover = DEFAULT_IMG_URL, path, emoji = "?" }) => {
   return (
     <div>
-      <Anchor href={path}>
+      <Anchor to={path}>
         <Image src={cover} />
         {emoji}
       </Anchor>

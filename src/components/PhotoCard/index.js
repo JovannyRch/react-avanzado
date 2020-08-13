@@ -4,6 +4,7 @@ import { Wrapper, Image } from "./styles";
 import { useLocalStorage } from "./../../hooks/useLocalStorage";
 import FavButton from "../FavButton";
 import useToggleLikeMutation from "../../mutation/toggleLikeMutation";
+import { Link } from "@reach/router";
 
 const DEFAULT_IMG =
   "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_cats.jpg";
@@ -15,11 +16,11 @@ const PhotoCard = ({ likes = 0, id, src = DEFAULT_IMG }) => {
 
   return (
     <article>
-      <a href={"/details/" + id}>
+      <Link to={"/details/" + id}>
         <Wrapper>
           <Image src={src} />
         </Wrapper>
-      </a>
+      </Link>
       <FavButton
         onClick={() => {
           if (!liked) {

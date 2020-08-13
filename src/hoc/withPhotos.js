@@ -14,8 +14,8 @@ const getPhotos = gql`
   }
 `;
 
-const getPhoto = gql`
-  query getPhoto($id: ID) {
+const GET_SINGLE_PHOTO = gql`
+  query getSinglePhoto($id: ID!) {
     photo(id: $id) {
       id
       categoryId
@@ -35,6 +35,9 @@ export const useGetPhotos = (categoryId) => {
 };
 
 export const useGetPhoto = (id) => {
-  const { loading, data, error } = useQuery(getPhoto, { variables: { id } });
+  console.log("id:", id);
+  const { loading, data, error } = useQuery(GET_SINGLE_PHOTO, {
+    variables: { id },
+  });
   return { loading, data, error };
 };
