@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import Context from "../Context";
 const User = () => {
   return (
-    <>
-      <h1>User Page</h1>
-    </>
+    <Context.Consumer>
+      {({ isAuth, activateAuth, removeAuth }) => {
+        return (
+          <>
+            <h1>User Page</h1>
+            <button onClick={removeAuth}>Cerrar sesión</button>
+          </>
+        );
+      }}
+    </Context.Consumer>
   );
 };
 
