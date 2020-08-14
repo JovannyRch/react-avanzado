@@ -1,9 +1,17 @@
 import React from "react";
+import PhotoCard from "../components/PhotoCard";
+import { useGetFavs } from "../hooks/useGetFavs";
+
 const Favs = () => {
+  const { data, loading } = useGetFavs();
+  if (loading) return "";
+  if (!data.favs) return <h1>No photos</h1>;
   return (
-    <>
-      <h1>Favs Page</h1>
-    </>
+    <ul>
+      {data.favs.map((photo) => (
+        <PhotoCard key={photo.id} {...photo} />
+      ))}
+    </ul>
   );
 };
 
