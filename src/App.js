@@ -11,6 +11,7 @@ import Favs from "./pages/Favs";
 import User from "./pages/User";
 import NotRegister from "./pages/NotRegisterUser";
 import Context from "./Context";
+import LogingPage from "./pages/LoginPage";
 
 const UserLogger = ({ children }) => {
   return children({ isAuth: false });
@@ -37,6 +38,8 @@ const App = () => {
             <Router>
               <NotRegister path="/favs" />
               <NotRegister path="/user" />
+              <NotRegister path="/signup" />
+              <LogingPage path="/login" />
             </Router>
           );
         }}

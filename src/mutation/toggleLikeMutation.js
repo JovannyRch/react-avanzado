@@ -2,8 +2,8 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 const LIKE_PHOTO = gql`
-  mutation likeAnonymousPhoto($input: LikePhoto!) {
-    likeAnonymousPhoto(input: $input) {
+  mutation likePhoto($input: LikePhoto!) {
+    likePhoto(input: $input) {
       id
       liked
       likes
